@@ -1,0 +1,19 @@
+<nz-layout class="layout">
+  <app-header (nzCollapsed)="launchSidebar()"></app-header>
+  <nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
+      <app-sider [isCollapsed]="isCollapsed"></app-sider>
+    </nz-sider>
+    <nz-layout [ngStyle]="{'margin-left':isCollapsed?'80px':'200px'}" class="layout-nz">
+      <nz-content style="background:#fff;padding: 20px">
+        <router-outlet>
+        </router-outlet>
+      </nz-content>
+      <nz-footer style="text-align: center;">
+        <a href="#" target="_blank"><i nz-icon type="github"></i></a>
+      小猴子爱喝咖啡 ©{{date}} By
+        <a href="#" target="_blank" style="outline: none;color: #565656">德玛西亚</a>
+      </nz-footer>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

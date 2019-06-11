@@ -1,0 +1,34 @@
+<nz-header>
+  <div class="dw-logo" [ngStyle]="{'width':isCollapsed?'80px':'200px'}">
+    <a class="logo_" href="#" *ngIf="isCollapsed"></a>
+    <p *ngIf="!isCollapsed" style="margin: 0;">
+      <a class="logo_" href="#"></a>
+      <span class="logo_name">小猴子爱喝咖啡</span>
+    </p>
+  </div>
+ <div  [ngClass]="{'dw-user': !isCollapsed,'dw-user-false':isCollapsed}">
+  <div class="dw-inter-change">
+    <i class="trigger" nz-icon [type]="isCollapsed?'menu-unfold':'menu-fold'" (click)="changeIcon()"></i>
+  </div>
+  <div class="dw-inter">
+    <div class="dw-inter-item">
+      <nz-dropdown [nzPlacement]="'bottomCenter'">
+        <a nz-dropdown>
+          admin
+        </a>
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item>
+            <a>个人中心</a>
+          </li>
+          <li nz-menu-item (click)="logout()">
+            <a>退出</a>
+          </li>
+        </ul>
+      </nz-dropdown>
+    </div>
+  </div>
+ </div>
+</nz-header>
+<ng-template #suffixIconSearch>
+  <i nz-icon type="search"></i>
+</ng-template>

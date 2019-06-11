@@ -24,10 +24,10 @@ export class TableComponent implements OnInit {
       current: ''
     })
       .subscribe(res => {
-        const callbackCode = this.api.callbackCode(res);
-        if (callbackCode) {
-          console.log('callbackCode', callbackCode);
-        }
+        // const callbackCode = this.api.callbackCode(res);
+        // if (callbackCode) {
+        //   console.log('callbackCode', callbackCode);
+        // }
       });
   }
 

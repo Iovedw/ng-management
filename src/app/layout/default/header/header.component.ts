@@ -29,6 +29,6 @@ export class HeaderComponent implements OnInit {
     this.nzCollapsed.emit();
   }
   logout() {
-    this.api.logoOut();
+    // this.api.logoOut();
   }
 }

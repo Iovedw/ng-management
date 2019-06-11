@@ -8,7 +8,7 @@ export class MenusService {
   constructor() { }
   _Menus = [
     {
-      text: 'welcome',
+      text: 'Home',
       link: 'index',
       icon: 'home',
       children: [
@@ -21,6 +21,34 @@ export class MenusService {
           text: 'table',
           link: 'welcome/table',
           icon: '',
+        }
+      ]
+    },
+    {
+      text: '品牌管理',
+      link: 'brand',
+      icon: 'bars',
+      children: [
+        {
+          text: '品牌列表',
+          link: 'brand/list',
+          icon: 'ordered-list',
+        }
+      ]
+    },
+    {
+      text: '房主管理',
+      link: 'holder',
+      icon: 'profile',
+      children: [
+        {
+          text: '房主列表',
+          link: 'holder/list',
+          icon: 'solution',
+        },{
+          text: '预定申请',
+          link: 'holder/Book',
+          icon: 'file-audit',
         }
       ]
     },

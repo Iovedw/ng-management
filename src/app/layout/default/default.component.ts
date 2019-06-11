@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingComponent } from '../../shared/loading/loading.component'; // loading子组件
-import { ActivatedRoute, Router, Params, NavigationEnd,PRIMARY_OUTLET, NavigationStart } from '@angular/router';
+import { ActivatedRoute, Router, Params, NavigationEnd, PRIMARY_OUTLET, NavigationStart } from '@angular/router';
 import { ApiService } from 'src/app/core/api/api.service';
 @Component({
   selector: 'app-default',
@@ -22,7 +22,7 @@ export class DefaultComponent implements OnInit {
   ) {
     router.events.subscribe(e => {
       if(e instanceof NavigationStart) {
-        this.checkedBack('1','0');
+        this.checkedBack('1','2');
       }else if(e instanceof NavigationEnd) {
         setTimeout(() => {
           this.checkedBack('0',''); // 传一任意值停止动画
@@ -40,6 +40,7 @@ export class DefaultComponent implements OnInit {
 
   // 传值给子组件
   checkedBack(status,data) {
+    console.log('传值给子组件');
     this.childData = {
       status: status, // status:1 开始执行动画 0关闭动画
       loader: data    // data: 选择动画形式 暂时只有0, 1 两种动画

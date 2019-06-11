@@ -34,7 +34,3 @@ constructor( @Inject(DA_SERVICE_TOKEN) private tokenService: TokenService) {
 用户认证：[@delon/auth](https://ng-alain.com/auth/getting-started)
 
 项目框架ng-zorro-1.8.x：[ng-zorro](https://ng.ant.design/version/1.8.x/) 
-
-## 项目知识点
-    1. core核心文件 ==》api.services 封装好的请求(get,post)
-        1.1: 

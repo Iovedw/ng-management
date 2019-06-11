@@ -3,7 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { LoadingComponent } from './loading/loading.component';
 
+const COMPONENTS = [
+  LoadingComponent
+];
 const SHAREDS = [
   CommonModule,
   ReactiveFormsModule,
@@ -15,9 +19,12 @@ const SHAREDS = [
   imports: [
     ...SHAREDS
   ],
-  declarations: [],
+  declarations: [
+    ...COMPONENTS,
+  ],
   exports: [
-    ...SHAREDS
+    ...SHAREDS,
+    ...COMPONENTS
   ]
 })
 export class SharedModule { }

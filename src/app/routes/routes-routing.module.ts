@@ -19,6 +19,7 @@ const routes: Routes = [
         ],
         canActivate: [AuthGuardService]
     },
+
     /**全屏布局 */
     {
         path: 'fullscreen',
@@ -35,7 +36,6 @@ const routes: Routes = [
             { path: '', redirectTo: 'login', pathMatch: 'full' },
             { path: 'login', component: LoginComponent }
         ]
-
     }
 ];
 @NgModule({

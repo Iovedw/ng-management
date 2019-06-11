@@ -16,4 +16,5 @@
       </nz-footer>
     </nz-layout>
   </nz-layout>
+  <app-loading #child [data]='childData' (acceptData)="checkedCallBack($event)"></app-loading>
 </nz-layout>

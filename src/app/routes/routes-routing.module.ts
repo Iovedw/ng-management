@@ -12,8 +12,10 @@ const routes: Routes = [
         path: 'default',
         component: DefaultComponent,
         children: [
-            { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-            { path: 'welcome', loadChildren: './welcome/welcome.module#WelcomeModule' },
+            { path: '', redirectTo: 'Home', pathMatch: 'full' },
+            { path: 'home', loadChildren: './home/home.module#HomeModule' },
+            { path: 'brand', loadChildren: './brand/brand.module#BrandModule' },
+            { path: 'holder', loadChildren: './holder/holder.module#HolderModule' }
         ],
         canActivate: [AuthGuardService]
     },

@@ -13,14 +13,9 @@ export class MenusService {
       icon: 'home',
       children: [
         {
-          text: 'Hi',
-          link: 'welcome/hi',
-          icon: '',
-        },
-        {
-          text: 'table',
-          link: 'welcome/table',
-          icon: '',
+          text: '主页',
+          link: 'home/index',
+          icon: 'github',
         }
       ]
     },
@@ -47,8 +42,8 @@ export class MenusService {
           icon: 'solution',
         },{
           text: '预定申请',
-          link: 'holder/Book',
-          icon: 'file-audit',
+          link: 'holder/application',
+          icon: 'contacts',
         }
       ]
     },

@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/core/api/api.service';
 import { Observable } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd';
 import { DA_SERVICE_TOKEN, TokenService } from '@delon/auth';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,9 +23,8 @@ export class AuthGuardService implements CanActivate {
       return true;
     } else {
       this.notification.create('warning', '系统提示', '登录失效，请重新登录！');
-      // this.api.logoOut();
+      this.api.logoOut();
       return false;
     }
-
   }
 }

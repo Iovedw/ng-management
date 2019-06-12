@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
-import { IndexComponent } from './index/index.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   imports: [
@@ -9,7 +9,7 @@ import { IndexComponent } from './index/index.component';
     HomeRoutingModule
   ],
   declarations: [
-    IndexComponent
+    HomePageComponent
   ]
 })
 export class HomeModule { }

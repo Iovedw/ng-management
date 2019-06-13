@@ -9,41 +9,42 @@ export class MenusService {
   _Menus = [
     {
       text: 'Home',
-      link: 'index',
+      link: '',
       icon: 'home',
       children: [
         {
           text: '主页',
-          link: 'home/index',
+          link: '/menu/home',
           icon: 'github',
         }
       ]
     },
     {
       text: '品牌管理',
-      link: 'brand',
+      link: '',
       icon: 'bars',
       children: [
         {
           text: '品牌列表',
-          link: 'brand/list',
+          link: '/menu/brandList',
           icon: 'ordered-list',
         }
       ]
     },
     {
       text: '房主管理',
-      link: 'holder',
+      link: '',
       icon: 'profile',
       children: [
         {
-          text: '房主列表',
-          link: 'holder/list',
-          icon: 'solution',
-        },{
           text: '预定申请',
-          link: 'holder/application',
+          link: '/menu/application',
           icon: 'contacts',
+        },
+        {
+          text: '房主列表',
+          link: '/menu/holderList',
+          icon: 'solution',
         }
       ]
     },

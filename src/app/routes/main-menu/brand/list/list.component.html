@@ -1,0 +1,34 @@
+<div classs="brandList">
+  <nz-table
+    #rowSelectionTable
+    [nzData]="data"
+    (nzCurrentPageDataChange)="currentPageDataChange($event)"
+    (nzPageIndexChange)="refreshStatus()"
+    (nzPageSizeChange)="refreshStatus()"
+  >
+    <thead>
+      <tr>
+        <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of rowSelectionTable.data">
+        <td nzShowCheckbox [(nzChecked)]="data.checked" [nzDisabled]="data.disabled" (nzCheckedChange)="refreshStatus()"></td>
+        <td>{{data.name}}</td>
+        <td>{{data.age}}</td>
+        <td>{{data.address}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+
+<a>品牌列表 - 父组件</a>
+<div>
+  <span>引入子组件</span>
+  <div #brandChild></div>
+</div>
+<button class="btn btn-danger" (click)="destoryChild()">销毁子组件</button>

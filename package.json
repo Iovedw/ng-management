@@ -26,6 +26,7 @@
     "axios": "^0.19.0",
     "core-js": "^2.5.4",
     "echarts": "^4.2.1",
+    "ng-animate": "^0.3.4",
     "ng-zorro-antd": "^1.8.1",
     "ngx-loading": "^3.0.1",
     "rxjs": "6.0.0",

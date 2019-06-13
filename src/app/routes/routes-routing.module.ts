@@ -6,16 +6,13 @@ import { PassportComponent } from '../layout/passport/passport.component';
 import { LoginComponent } from './passport/login/login.component';
 import { AuthGuardService } from './guard/default.service';
 const routes: Routes = [
-	{ path: '', redirectTo: 'default', pathMatch: 'full' },
 	/**默认布局 */
 	{
-		path: 'default',
+		path: '',
 		component: DefaultComponent,
 		children: [
-			{ path: '', redirectTo: 'Home', pathMatch: 'full' },
-			{ path: 'home', loadChildren: './home/home.module#HomeModule' },
-			{ path: 'brand', loadChildren: './brand/brand.module#BrandModule' },
-			{ path: 'holder', loadChildren: './holder/holder.module#HolderModule' }
+			{ path: '', redirectTo: 'menu/home', pathMatch: 'full' },
+			{ path: 'menu', loadChildren: './main-menu/main-menu.module#MainMenuModule' },
 		],
 		canActivate: [AuthGuardService]
 	},

@@ -13,7 +13,10 @@ import { ApiService, API_URL } from './core/api/api.service';
 import { environment } from 'src/environments/environment';
 import { DelonAuthModule, SimpleInterceptor } from '@delon/auth';
 import { DelonACLModule } from '@delon/acl';
-registerLocaleData(en);
+import { FormsModule } from '@angular/forms';
+import { NgZorroAntdModule, NZ_I18N, zh_CN, NZ_NOTIFICATION_CONFIG } from 'ng-zorro-antd';
+import zh from '@angular/common/locales/zh';
+registerLocaleData(zh);
 
 @NgModule({
   declarations: [
@@ -28,13 +31,17 @@ registerLocaleData(en);
     LayoutModule,
     CoreModule,
     DelonAuthModule.forRoot(),
-    DelonACLModule.forRoot()
+    DelonACLModule.forRoot(),
+    FormsModule,
+    NgZorroAntdModule
   ],
   providers: [
     ApiService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: API_URL, useValue: environment.urlPrefix },
-    { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
+    { provide: NZ_NOTIFICATION_CONFIG, useValue: { nzMaxStack: 1 } },
+    { provide: NZ_I18N, useValue: zh_CN }
   ],
   bootstrap: [AppComponent]
 })

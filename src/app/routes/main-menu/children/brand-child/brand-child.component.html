@@ -1,6 +1,65 @@
-<div>
-  品牌列表 - ‘子’组件
-  <div style="color: pink;">父组件传给子组件title-name: {{title}}</div>
-  <button class="btn btn-success" *ngIf="Events == 'click1'" (click)="click1()">触发事件 {{Events}}</button>
-  <button class="btn btn-success" *ngIf="Events == 'click2'" (click)="click2()">触发事件 {{Events}}</button>
-</div>
+<section class="brandChild">
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="{{operation}}"
+    nzOkText="Ok"
+    nzCancelText="Cancel"
+    (nzOnOk)="handleOk()"
+    (nzOnCancel)="handleCancel()"
+    nzWidth="800"
+  >
+    <form nz-form >
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="brandName" nzRequired="true">品牌名称</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input type="text" nz-input (ngModelChange)="brandName" name="brandName" id="brandName">
+            </nz-form-control>
+          </nz-form-item >
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="companyName" nzRequired="true">公司名称</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input type="text" nz-input (ngModelChange) name="companyName" id="companyName">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="companyAddress">公司地址</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input type="text" nz-input (ngModelChange)="companyAddress" name="companyAddress" id="companyAddress">
+            </nz-form-control>
+          </nz-form-item >
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="companyTel">公司电话</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input type="text" nz-input (ngModelChange)="companyTel" name="companyTel" id="companyTel">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="description">描述</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <textarea
+                nz-input
+                (ngModelChange)="description"
+                placeholder="请输入品牌描述"
+                [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+              ></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </form>
+  </nz-modal>
+</section>

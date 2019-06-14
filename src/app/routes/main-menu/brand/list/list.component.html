@@ -1,36 +1,63 @@
-<div classs="brandList">
+<!-- 品牌列表 -->
+<div class="brand-common brand-condition">
+  <div nz-row nzType="flex" nzJustify="start">
+    <div nz-col nzSpan="1" class="c-title">品牌名 / 公司名:</div>
+    <div nz-col nzSpan="3" class="c-params">
+      <input nz-input [(ngModel)]="brandName" name="brandName" id="brandName">
+    </div>
+    <div nz-col nzSpan="1" class="c-params">
+      <button nz-button nzType="primary" (click)="getData()" ><i nz-icon class="anticon anticon-search"></i>查询</button>
+    </div>
+  </div>
+</div>
+<div class="brand-common brand-toobar">
+  <button nz-button nzType="primary" (click)="addBrand()" [disabled]="loading"><i nz-icon class="anticon anticon-plus-circle"></i>新增</button>
+  <button nz-button nzType="primary" (click)="updateBrand()" [disabled]="loading"><i nz-icon class="anticon anticon-edit"></i>修改</button>
+  <button nz-button nzType="primary" (click)="deleteBrand()" [disabled]="loading"><i nz-icon class="anticon anticon-delete"></i>删除</button>
+</div>
+<div class="brand-container">
   <nz-table
-    #rowSelectionTable
-    [nzData]="data"
-    (nzCurrentPageDataChange)="currentPageDataChange($event)"
-    (nzPageIndexChange)="refreshStatus()"
-    (nzPageSizeChange)="refreshStatus()"
-  >
+    #listBrandTable
+    nzBordered
+    [nzFrontPagination]="false"
+    [nzLoading]="loading"
+    [nzData]="dataSet"
+    [nzTotal]="total"
+    [(nzPageIndex)]="pageIndex"
+    [(nzPageSize)]="pageSize"
+    (nzPageIndexChange) = "refreshStatus($event)"
+    (nzPageSizeChange) = "refreshStatus($event)">
     <thead>
       <tr>
         <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Address</th>
+        <th>品牌名</th>
+        <th>公司名称</th>
+        <th>公司地址</th>
+        <th>公司电话</th>
+        <th>创建时间</th>
+        <th nzWidth="350px">描述</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of rowSelectionTable.data">
-        <td nzShowCheckbox [(nzChecked)]="data.checked" [nzDisabled]="data.disabled" (nzCheckedChange)="refreshStatus()"></td>
-        <td>{{data.name}}</td>
-        <td>{{data.age}}</td>
-        <td>{{data.address}}</td>
+      <tr *ngFor="let rowData of listBrandTable.data">
+        <td nzShowCheckbox [(nzChecked)]="rowData.checked" (nzCheckedChange)="refreshStatus()"></td>
+        <td>{{rowData.brandName}}</td>
+        <td>{{rowData.companyName}}</td>
+        <td>{{rowData.companyAddress}}</td>
+        <td>{{rowData.companyTel}}</td>
+        <td>{{rowData.createdTime | date:'yyyy-MM-dd HH:mm'}}</td>
+        <td>
+          <span  nz-popover nzTitle="描述" [nzContent]="rowData.description" nzPlacement="leftTop">
+            {{ desSubStr(rowData.description,20) }}
+          </span>
+        </td>
       </tr>
     </tbody>
   </nz-table>
 </div>
-
-<a>品牌列表 - 父组件</a>
-<svg class="icon" aria-hidden="true">
-  <use xlink:href="#icon-houzi"></use>
-</svg>
-<div>
-  <span>引入子组件</span>
+<!-- 引入子组件 -->
+<section class="brandChild">
   <div #brandChild></div>
-</div>
-<button class="btn btn-danger" (click)="destoryChild()">销毁子组件</button>
+</section>
+
+<!-- <button class="btn btn-danger" (click)="destoryChild()">销毁子组件</button> -->

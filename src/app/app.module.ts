@@ -13,7 +13,7 @@ import { ApiService, API_URL } from './core/api/api.service';
 import { environment } from 'src/environments/environment';
 import { DelonAuthModule, SimpleInterceptor } from '@delon/auth';
 import { DelonACLModule } from '@delon/acl';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';// 数据双向绑定必须引入的模块
 import { NgZorroAntdModule, NZ_I18N, zh_CN, NZ_NOTIFICATION_CONFIG } from 'ng-zorro-antd';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);

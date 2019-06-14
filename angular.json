@@ -36,9 +36,12 @@
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "./node_modules/ng-zorro-antd/src/ng-zorro-antd.min.css",
-              "src/styles.less"
+              "src/styles.less",
+              "src/assets/aliIcons/icons.less"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/aliIcons/iconfont.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -99,9 +102,12 @@
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "./node_modules/ng-zorro-antd/src/ng-zorro-antd.min.css",
-              "src/styles.less"
+              "src/styles.less",
+              "src/assets/aliIcons/icons.less"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/aliIcons/iconfont.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

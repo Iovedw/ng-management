@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingComponent } from '../../shared/loading/loading.component'; // loading子组件
 import { ActivatedRoute, Router, Params, NavigationEnd, PRIMARY_OUTLET, NavigationStart } from '@angular/router';
 import { ApiService } from 'src/app/core/api/api.service';
+import { OtherChildService } from "./other-child.service";
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
@@ -12,21 +14,32 @@ export class DefaultComponent implements OnInit {
   @ViewChild("child") greeting: LoadingComponent;
   childData: any = {}; // 发送给子组件loading - data
   acceptData: any = {};
-
+  subscription: Subscription;
+  
   isCollapsed = false;
   triggerTemplate = null;
   date: any;
+  
   constructor(
     private api: ApiService,
-    public activatedRoute: ActivatedRoute,private router: Router
+    public  activatedRoute: ActivatedRoute,
+    private otherService: OtherChildService,
+    private router: Router
   ) {
     router.events.subscribe(e => {
       if(e instanceof NavigationStart) {
         this.checkedBack('1','2');
       }else if(e instanceof NavigationEnd) {
-        setTimeout(() => {
-          this.checkedBack('0',''); // 传一任意值停止动画
-        }, 1500);
+        if(this.subscription == undefined){
+          this.checkedBack('0','');
+        }
+         // 接受父组件传来的初始化加载状态标识
+        this.subscription = otherService.Status$.subscribe(message => {
+          console.log('我是default子组件加载状态初始化状态'+ message); // true
+          if(message){
+            this.checkedBack('0',''); // 传一任意值停止动画
+          }
+        });
       }
     })
   }
@@ -38,12 +51,16 @@ export class DefaultComponent implements OnInit {
     this.date = date.getFullYear();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   // 传值给子组件
   checkedBack(status,data) {
     console.log('传值给子组件');
     this.childData = {
       status: status, // status:1 开始执行动画 0关闭动画
-      loader: data    // data: 选择动画形式 暂时只有0, 1 两种动画
+      loader: data    // data: 选择动画形式 暂时只有0, 1, 2三种动画
     };
   }
 

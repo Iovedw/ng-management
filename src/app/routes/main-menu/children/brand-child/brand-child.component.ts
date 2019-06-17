@@ -2,7 +2,6 @@ import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalService ,NzMessageService} from 'ng-zorro-antd';
 import axios from 'axios';
-
 @Component({
   selector: 'app-brand-child',
   templateUrl: './brand-child.component.html',
@@ -106,6 +105,8 @@ export class BrandChildComponent implements OnInit {
       return false;
     }
   }
+  
+  
 
   //  返回父组件数据
   public callBackFatherData(type):void{

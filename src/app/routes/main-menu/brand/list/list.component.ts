@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolve
 import { ApiService } from 'src/app/core/api/api.service';
 import { NzMessageService, NzModalService} from 'ng-zorro-antd';
 import { BrandChildComponent } from '../../children/brand-child/brand-child.component'; // 引入子组件
+import { OtherChildService } from "../../../../layout/default/other-child.service"
 import axios from 'axios';
 
 @Component({
@@ -35,8 +36,9 @@ export class BrandListComponent implements OnInit {
     private apiService: ApiService,
     private msgService: NzMessageService,
     private modalService: NzModalService,
+    private otherService: OtherChildService,
     private resolver: ComponentFactoryResolver
-    ) { }
+    ) {}
 
   ngOnInit() {
     this.pageIndex = 1;
@@ -62,12 +64,13 @@ export class BrandListComponent implements OnInit {
       console.log(response);
       that.dataSet = response.data.list;
       that.total = response.data.pagination.total;
-      
       that.dataSet.forEach(d => {
         d.checked = false;
       });
       that.refreshStatus(null);
       that.loading = false;
+       // 向子组件default传递初始化加载状态, 关闭加载状态loading
+      that.otherService.StatusMission(1);
     }).
     catch(function(error) {
       that.msgService.error(error);
@@ -224,6 +227,7 @@ export class BrandListComponent implements OnInit {
       console.log("--->" + param);
       if(param == '1'){
         this.getData();
+        this.destoryChild(); // 销毁子组件
       }
     });
   }

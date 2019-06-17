@@ -10,6 +10,7 @@ import { RoutesModule } from './routes/routes.module';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { ApiService, API_URL } from './core/api/api.service';
+// import { OtherChildService } from './layout/default/other-child.service';
 import { environment } from 'src/environments/environment';
 import { DelonAuthModule, SimpleInterceptor } from '@delon/auth';
 import { DelonACLModule } from '@delon/acl';
@@ -33,6 +34,7 @@ registerLocaleData(zh);
     DelonAuthModule.forRoot(),
     DelonACLModule.forRoot(),
     FormsModule,
+    // OtherChildService,
     NgZorroAntdModule
   ],
   providers: [

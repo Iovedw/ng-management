@@ -38,7 +38,7 @@ export class BrandListComponent implements OnInit {
     private modalService: NzModalService,
     private otherService: OtherChildService,
     private resolver: ComponentFactoryResolver
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.pageIndex = 1;

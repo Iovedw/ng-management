@@ -66,3 +66,6 @@ constructor( @Inject(DA_SERVICE_TOKEN) private tokenService: TokenService) {
                             <use xlink:href="#icon-xxx"></use>
                         </svg>
                     }
+
+## default下的other-child.SERVICE
+    1. 添加OtherChildService服务，层级组件分别注册（default,brand-list），解决初进入左侧栏目初次加载数据通过StatusMission方法发射数据，Subscription接受发射的数据，从而停止loading动画

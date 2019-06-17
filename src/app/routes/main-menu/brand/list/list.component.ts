@@ -106,19 +106,11 @@ export class BrandListComponent implements OnInit {
     }
     let selectedData = this.dataSet.filter(v => v.checked == true)[0];
     this.createChild(selectedData, "更新操作");
-    // this.showUserOperatePage(selectedData,"更新操作");
   }
  
-  // 显示增添数据页面
-  showUserOperatePage(data,type){
-    this.comp.instance.brandData = data;   // 传参data给子组件
-    console.log(data)
-  }
-
   // 新增
   addBrand(): void{
-    // this.showUserOperatePage(null,"新增操作");
-    this.createChild({},"新增操作");
+    this.createChild('',"新增操作");
   }
 
   // 删除
@@ -228,11 +220,14 @@ export class BrandListComponent implements OnInit {
     this.comp.instance.operation = type;           // 传参操作类型给子组件
     this.comp.instance.brandData = data;           // 传参data给子组件
     this.comp.instance.Events = "getBrandData";    // 传给子组件事件，获取父组件传递的数据
-
-    this.comp.instance.btnClick.subscribe((param) => {
+    this.comp.instance.btnClick.subscribe((param) => { // 接受子组件返回给父组件数据
       console.log("--->" + param);
+      if(param == '1'){
+        this.getData();
+      }
     });
   }
+
   // 销毁子组件
   public destoryChild(): void {
     this.comp.destroy();
